@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BlogVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<main id="main" class="main">
+
+    <div class="container mt-5">
+        <h2 class="text-center">Blogs</h2>
+        <div>
+            <a asp-action="Create" class="btn btn-success text-white btn-sm"><i class="bi bi-plus-circle"></i></a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Blog
+                    </th>
+                    <th scope="col">
+                        Start Date
+                    </th>
+                    <th>
+                        Products Count
+                    </th>
+                    <th>
+                        Operations
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">
+                            @item.Title
+                        </th>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.Image
+                        </td>
+
+
+                        <th>
+                            <a class="btn btn-primary text-white btn-sm"><i class="bi bi-info-lg"></i></a>
+                            <a class="btn btn-warning text-white btn-sm"><i class="bi bi-pen-fill"></i></a>
+                            <form class="d-inline" method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                <button type="submit" class="btn btn-danger text-white btn-sm"><i class="bi bi-trash-fill"></i></button>
+                            </form>
+                        </th>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+        <!-- End Table with stripped rows -->
+
+
+    </div>
+
+
+</main>
+
+
